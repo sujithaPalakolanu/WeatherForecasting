@@ -28,7 +28,7 @@ namespace WeatherForecasting
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 //GET Method
-                var response = await client.GetAsync($"http://api.openweathermap.org/data/2.5/weather?q={city}&APPID={apiKey}");
+                var response = await client.GetAsync($"http://api.openweathermap.org/data/2.5/weather?q={city}&APPID={apiKey}&units=metric");
                 if (response.IsSuccessStatusCode)
                 {
                     var res = await response.Content.ReadAsStringAsync();

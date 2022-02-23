@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using WeatherForecasting.Models;
 
 namespace WeatherForecasting.Controllers
 {
+    [Authorize]
     public class ForecastController : Controller
     {
         private readonly IForecastRepository _forecastRepository;
@@ -15,6 +17,7 @@ namespace WeatherForecasting.Controllers
         {
             _forecastRepository = forecastRepository;
         }
+        
         public IActionResult SearchByCity()
         
         {
@@ -46,10 +49,7 @@ namespace WeatherForecasting.Controllers
                 viewModel.Wind = weatherResponse.wind.speed;
                 viewModel.Weather = weatherResponse.weather[0].main;
             }
-            else
-            {
-                return 
-            }
+            
             return View(viewModel);
         }
     }
