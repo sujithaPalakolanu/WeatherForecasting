@@ -4,19 +4,35 @@
 @{
     ViewData["Title"] = "WeatherReport";
 }
+<style>
+    .card {
+        position: center;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        width: 40%;
+        top: 40%;
+        left: 30%;
+        
+    }
 
-<div class="container">
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
 
-    <div class="container">
+    .container {
+        padding: 2px 16px;
+    }
+</style>
 
-        <div class="form-group col-md-offset-3 col-md-5">
+<div class="container" >
 
-            <h2>Forecast for the selected city</h2>
+    <div class="card">
 
-            <label asp-for="City"></label>
-            <span class="badge">@Model.City</span>
-            <br />
+        <div class="form-group col-md-offset-3" style="text-align:center">
 
+            <h2>Weather report of @Model.City</h2>
+
+          
             <label asp-for="Temprature"></label>
             <span class="badge">@Model.Temprature °C</span>
             <br />
@@ -38,11 +54,9 @@
 
         </div>
 
-    </div>
+   
 
-    <div class="container">
-
-        <div class="form-group col-md-offset-3 col-md-5">
+        <div class="form-group col-md-offset-3"style="text-align:center">
 
             <form method="get">
                 <button asp-controller="Forecast" asp-action="SearchByCity" class="btn btn-success">Home</button>
