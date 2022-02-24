@@ -8,6 +8,7 @@ namespace WeatherForecasting.Models
 {
     public class WeatherReport
     {
+        [Required]
         [Display(Name = "City Name: ") ]
         public string  City { get; set; }
 

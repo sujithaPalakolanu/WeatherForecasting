@@ -31,6 +31,7 @@ namespace WeatherForecasting.Controllers
             // If the model is valid, consume the Weather API to bring the data of the city
             if (ModelState.IsValid)
             {
+                
                 return RedirectToAction("WeatherReport", "Forecast", new { city = model.City });
             }
             return View(model);
@@ -42,15 +43,21 @@ namespace WeatherForecasting.Controllers
             WeatherReport viewModel = new WeatherReport();
             if (weatherResponse != null)
             {
+                
                 viewModel.City = weatherResponse.name;
                 viewModel.Humidity = weatherResponse.main.humidity;
                 viewModel.Pressure = weatherResponse.main.pressure;
                 viewModel.Temprature = weatherResponse.main.temp;
                 viewModel.Wind = weatherResponse.wind.speed;
                 viewModel.Weather = weatherResponse.weather[0].main;
+                return View(viewModel);
+            }
+            else
+            {
+                ModelState.AddModelError(nameof(viewModel.City), "City not found");
+                return View(viewModel);
             }
             
-            return View(viewModel);
         }
     }
 }
