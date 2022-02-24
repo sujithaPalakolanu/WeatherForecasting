@@ -3,25 +3,41 @@
 @{
     ViewData["Title"] = "SearchByCity";
 }
+<style>
 
-<div class="container">
 
-    <form method="post">
+    .overlay-content {
+        position: absolute;
+        top: 40%;
+        left: 40%;
+        text-align: center;
+        margin-top: 60%;
+        margin: auto;
 
-        <div class="container">
-            <div class="form-group col-md-offset-3 col-md-5">
-                <h1>Weather Report</h1>
-                <h2>Please enter city name</h2>
-                <label asp-for="City" style="font-family: Arial"></label>
-                <input asp-for="City" class="form-control" />
-                <span asp-validation-for="City" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="container">
-            <div class="form-group col-md-offset-3 col-md-5">
-                <button asp-controller="Forecast" asp-action="SearchByCity" class="btn btn-primary">Search</button>
-            </div>
-        </div>
-    </form>
 
-</div>
+       
+    }
+
+</style>
+
+    <div style="text-align:center; top:20%">
+        <h1>Welcome to Vayuvidha</h1>
+
+        <i>
+            "Sunshine is delicious, rain is refreshing, wind braces us up, snow is exhilarating; there is really no such thing as bad weather, only different kinds of good weather."
+
+            - John Ruskin.
+        </i>
+    </div>
+    <div class="overlay-content">
+
+        <form method="post" asp-controller="Forecast" asp-action="SearchByCity">
+            <input asp-for="City" placeholder="Please enter city name">
+            <button><i class="fa fa-search"></i></button>
+            <span asp-validation-for="City" class="text-danger"></span>
+
+        </form>
+
+    </div>
+
+
